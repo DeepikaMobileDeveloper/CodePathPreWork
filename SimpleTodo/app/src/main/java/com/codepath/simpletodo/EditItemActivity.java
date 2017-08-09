@@ -1,9 +1,11 @@
 package com.codepath.simpletodo;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -23,6 +25,13 @@ public class EditItemActivity extends AppCompatActivity {
         etTodoItem = findViewById(R.id.eTToDoItem);
         etTodoItem.setText(text);
         etTodoItem.setSelection(text.length());
+        etTodoItem.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                InputMethodManager keyboard = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                keyboard.showSoftInput(etTodoItem, 0);
+            }
+        },50);
     }
 
     public void onSaveClick(View view) {
