@@ -33,8 +33,6 @@ public class MainActivity extends AppCompatActivity {
         readItems();
         itemsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
         lvItems.setAdapter(itemsAdapter);
-        items.add("First Item");
-        items.add("Second Item");
         setUpListViewListener();
     }
 
@@ -72,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
             if (pos == -1 || TextUtils.isEmpty(text)) {
                 return;
             }
-            items.add(pos, text);
+            items.set(pos,text);
             itemsAdapter.notifyDataSetChanged();
             writeItems();
         }
